@@ -2,7 +2,7 @@
 
 SERVER_PID_FILE=server.pid
 
-SERVER_PID=$(cat "${SERVER_PID_FILE}");
+SERVER_PID=$(cat "${SERVER_PID_FILE}" 2>/dev/null);
 
 if [ -z "${SERVER_PID}" ]; then
     echo "Process id for servers is written to location: {$SERVER_PID_FILE}"

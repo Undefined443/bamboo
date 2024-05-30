@@ -1,3 +1,5 @@
+# Bamboo
+
 ## 什么是 Bamboo？
 
 **Bamboo** 是一个原型开发和评估框架，用于研究区块链专用的下一代 BFT（拜占庭容错）协议，即链式 BFT或 cBFT。
@@ -8,7 +10,7 @@ Bamboo 的设计基于这样一种观点，即 cBFT 协议的核心可以抽象�
 
 *警告*：**Bamboo**仍在大力开发中，还有更多的功能和协议有待加入。
 
-Bamboo 的详细信息可参见本[技术报告](https://arxiv.org/abs/2103.00777)。该论文将发表于[ICDCS 2021](https://icdcs2021.us/)。
+Bamboo 的详细信息可参见本[技术报告](https://arxiv.org/abs/2103.00777)。该论文将发表于 [ICDCS 2021](https://icdcs2021.us/)。
 
 ## 什么是 cBFT？
 
@@ -49,7 +51,7 @@ Bamboo 的详细信息可参见本[技术报告](https://arxiv.org/abs/2103.0077
 - [x] 基准测试
 - [x] 故障注入
 
-# 如何编译
+## 如何编译
 
 1. 安装 [Go](https://golang.org/dl/).
 
@@ -63,19 +65,19 @@ go build ../server
 go build ../client
 ```
 
-# 如何运行
+## 如何运行
 
 用户可以在模拟模式（单进程）或部署模式中运行基于 Bamboo 的 cBFT 协议。
 
-## 模拟模式
+### 模拟模式
 
-在模拟模式下，副本在不同的 Goroutines 中运行，信息通过 Go 通道传递。
+在模拟模式下，副本在不同的 Go routines 中运行，信息通过 Go channels 传递。
 
 1. `cd bamboo/bin`
 2. 修改 `ips.txt` 中每个节点的 IP 地址集。IP 数等于节点数。此处，本地 IP 为 `127.0.0.1`。每个节点将被分配一个从 `8070` 起递增的端口。
 3. 修改 `config.json` 中的配置参数。
 4. 修改 `simulation.sh` 以指定要运行的协议名称。
-5. 运行 `server` 然后使用脚本运行 `client`。
+5. 运行 `server` ，然后使用脚本运行 `client`。
 
 ```sh
 bash simulation.sh
@@ -91,12 +93,12 @@ bash stop.sh
 
 日志生成在本地目录，名称为 `client/server.xxx.log`，其中 `xxx` 是进程的 pid。
 
-## 部署模式
+### 部署模式
 
 Bamboo 可以部署在真实网络中。
 
 1. `cd bamboo/bin/deploy`
-2. 编译 `server` 和 `client`.
+2. 编译 `server` 和 `client`。
 3. 分别在 `pub_ips.txt` 和 `ips.txt` 中指定服务端节点的外部 IP 和内部 IP。
 4. 在 `clients.txt` 中指定作为客户机运行的机器的 IP 地址。
 5. 在 `run.sh` 中指定协议类型。
@@ -136,7 +138,7 @@ bash setup_cli.sh
    bash ./pkill.sh
    ```
 
-# 监视器
+### 监视器
 
 在每次运行期间，可以通过浏览器查看节点的统计数据（吞吐量、延迟、视图编号等）。
 

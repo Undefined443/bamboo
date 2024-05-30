@@ -2,7 +2,7 @@
 
 PID_FILE=client.pid
 
-PID=$(cat "${PID_FILE}");
+PID=$(cat "${PID_FILE}" 2>/dev/null);
 
 if [ -z "${PID}" ]; then
     echo "Process id for clients is written to location: {$PID_FILE}"
